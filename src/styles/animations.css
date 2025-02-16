@@ -1,0 +1,19 @@
+.fade-in-animation {
+  animation: fadeIn 1.5s ease-in-out forwards; /* Длительность, функция ускорения и замедления */
+}
+
+.fade-in-animation_before {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Начальное значение непрозрачности */
+    transform: translateY(20px); /* Начальное значение смещения вниз (может быть адаптировано) */
+  }
+  to {
+    opacity: 1; /* Конечное значение непрозрачности */
+    transform: translateY(0); /* Конечное значение смещения вниз */
+  }
+}

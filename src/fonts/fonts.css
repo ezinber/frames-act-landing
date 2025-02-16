@@ -1,0 +1,51 @@
+/* Inter */
+
+@font-face {
+  font-family: Inter;
+  src:
+    url(./interregular.woff2) format('woff2'),
+    url(./interregular.woff) format('woff'),
+    url(./interregular.ttf) format('ttf');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src:
+    url(./interbold.woff2) format('woff2'),
+    url(./interbold.woff) format('woff'),
+    url(./interbold.ttf) format('ttf');
+  font-weight: 700;
+  font-display: swap;
+}
+
+
+/* Cubao */
+
+@font-face {
+  font-family: Cubao;
+  src:
+    url(./Cubao_Free_Narrow.woff2) format('woff2'),
+    url(./Cubao_Free_Narrow.woff) format('woff');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Cubao;
+  src:
+    url(./Cubao_Free_Regular.woff2) format('woff2'),
+    url(./Cubao_Free_Regular.woff) format('woff');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Cubao;
+  src:
+    url(./Cubao_Free_Wide.woff2) format('woff2'),
+    url(./Cubao_Free_Wide.woff) format('woff');
+  font-weight: 900;
+  font-display: swap;
+}
