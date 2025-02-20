@@ -10,9 +10,9 @@
   --drop-shadow-a: drop-shadow(0 0 .5em);
   --section-padding: 24px;
 
-  @media (width >= 768px) {
-    --section-padding: 96px;
-  }
+  --min-screen-width: 20rem;
+  --max-screen-width: 90rem;
+  --screen-calc: (100vw - var(--min-screen-width)) / 1120 /*screen diff*/;
 
   font-family: system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -40,13 +40,12 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: var(--min-screen-width);
   min-height: 100vh;
 }
 
 main {
   width: 100%;
-  max-width: 1280px;
 }
 
 h1,
@@ -60,8 +59,11 @@ p {
 }
 
 .page {
+  container: page / inline-size;
   min-height: 100vh;
+  min-width: var(--min-screen-width);
   width: 100%;
+  padding: 0 calc(50% - var(--max-screen-width) / 2);
   background-color: var(--color-accent-a);
   color: #f9f9f9;
   display: flex;
@@ -236,35 +238,82 @@ p {
 /* block 'section' */
 
 .section {
+  --prefer-sides-padding: calc(24px + 72 * var(--screen-calc));
+  --min-font-size: 1rem;
+  --max-font-size: 2rem;
+  --prefer-font-size: calc(var(--min-font-size) + 16 * var(--screen-calc));
+  font-size: clamp(var(--min-font-size), var(--prefer-font-size), var(--max-font-size));
+
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
   padding:
     calc(var(--header-height) + 16px)
-    var(--section-padding);
+    clamp(24px, var(--prefer-sides-padding), 96px);
   margin: auto;
   display: flex;
   flex-direction: column;
-  font-size: 1rem;
 
-  @media (width >= 768px) {
-    font-size: 2rem;
+  & h1,
+  & h2 {
+    margin-bottom: .5em;
+    line-height: 1.2;
   }
-
 }
 
 /* section 'cover' */
 
 .section_name_cover {
-  & h1 {
-    font-size: 2em;
-    line-height: 1.2;
-    max-inline-size: max(360px, 50%);
+  display: grid;
+  grid-template-columns: 15em auto;
 
-    & + p {
-      font-size: 1.5em;
-      line-height: 1.2;
-      max-inline-size: max(360px, 50%);
+  & h1 {
+    font-size: 2.5em;
+  }
+
+  & h1 + p {
+    font-size: 1.5em;
+    grid-column: 1;
+    line-height: 1.2;
+  }
+}
+
+.section_name_about {
+  & h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    text-wrap-style: pretty;
+  }
+
+  & h2 + p {
+    margin-bottom: 4em;
+  }
+
+  & div {
+    border: 1px solid #fff;
+    width: 100%;
+    height: fit-content;
+    aspect-ratio: 2 / 1;
+  }
+
+  @media (width >= 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--prefer-sides-padding);
+
+    & h2 {
+      margin-top: auto;
+      grid-column: 2;
+    }
+
+    & h2 + p {
+      grid-column: 2;
+      margin-bottom: 0;
+    }
+
+    & div {
+      grid-row: 1 / span 2;
+      align-self: center;
     }
   }
 }
