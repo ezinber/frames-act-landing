@@ -100,6 +100,25 @@ p {
   }
 }
 
+.grid-column-limiter {
+  /**
+   * User input values.
+   */
+  --grid-column-count: 1;
+  --grid-column-min-width: 10rem;
+  --grid-column-gap: 2rem;
+
+  /**
+   * Calculated values.
+   */
+  --total-gap-width: calc((var(--grid-column-count) - 1) * var(--grid-column-gap));
+  --grid-column-max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(var(--grid-column-min-width), var(--grid-column-max-width)), 1fr));
+  grid-gap: var(--grid-column-gap);
+}
+
 /* block 'header' */
 
 .header {
@@ -330,14 +349,9 @@ p {
   }
 
   & ul {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(17rem, 1fr));
-    gap: var(--prefer-sides-padding);
-
-    & > li {
-      width: min(14rem, 100%);
-      justify-self: center;
-    }
+    --grid-column-count: 2;
+    --grid-column-min-width: 17rem;
+    --grid-column-gap: var(--prefer-sides-padding);
   }
 
   & div {
@@ -345,12 +359,6 @@ p {
     height: fit-content;
     aspect-ratio: 2 / 1;
     border: 1px solid #fff;
-  }
-
-  @media (width >= 768px) {
-    & ul {
-      /* grid-template-columns: 1fr 1fr; */
-    }
   }
 }
 
@@ -360,14 +368,12 @@ p {
   }
 
   & ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-    gap: var(--prefer-sides-padding);
-    justify-content: space-evenly;
+    --grid-column-count: 4;
+    --grid-column-min-width: 10rem;
+    --grid-column-gap: var(--prefer-sides-padding);
 
     & > li {
-      width: min(14rem, 100%);
-      justify-self: center;
+
     }
   }
 
@@ -376,23 +382,4 @@ p {
     border-radius: 9999px;
     aspect-ratio: 1 / 1;
   }
-}
-
-.grid-container {
-  /**
-   * User input values.
-   */
-  --grid-column-count: 2;
-  --grid-item--min-width: 17rem;
-
-  /**
-   * Calculated values.
-   */
-  --gap-count: calc(var(--grid-column-count) - 1);
-  --total-gap-width: calc(var(--gap-count) * var(--prefer-sides-padding));
-  --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
-
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
-  grid-gap: var(--prefer-sides-padding);
 }
