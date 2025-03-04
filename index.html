@@ -104,11 +104,44 @@
 
       <section class="section section_name_feedbacks">
         <h2>Отзывы</h2>
-        <article>
-          <img src="" alt="">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima deserunt, odio adipisci nisi explicabo sunt aspernatur 
-            quas numquam, aperiam obcaecati dolores iusto, fugiat consequatur. Eius esse neque voluptates in illo!</p>
-        </article>
+          <ul id="slider">
+            <li id="slide-1">
+              <a href="#slide-3">A</a>
+              <article itemscope itemtype="https://schema.org/Review">
+                <p itemprop="reviewBody">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima deserunt, odio adipisci nisi explicabo sunt aspernatur 
+                  quas numquam, aperiam obcaecati dolores iusto, fugiat consequatur. Eius esse neque voluptates in illo!</p>
+                <footer itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <img itemprop="image" src="" alt="">
+                  <address itemprop="name">Вася Пупкин</address>
+                </footer>
+              </article>
+              <a href="#slide-2">A</a>
+            </li>
+            <li id="slide-2">
+              <a href="#slide-1">A</a>
+              <article itemscope itemtype="https://schema.org/Review">
+                <p itemprop="reviewBody">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima deserunt, odio adipisci nisi explicabo sunt aspernatur 
+                  quas numquam, aperiam obcaecati dolores iusto, fugiat consequatur. Eius esse neque voluptates in illo!</p>
+                <footer itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <img itemprop="image" src="" alt="">
+                  <address itemprop="name">John Doe</address>
+                </footer>
+              </article>
+              <a href="#slide-3">A</a>
+            </li>
+            <li id="slide-3">
+              <a href="#slide-2">A</a>
+              <article itemscope itemtype="https://schema.org/Review">
+                <p itemprop="reviewBody">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima deserunt, odio adipisci nisi explicabo sunt aspernatur 
+                  quas numquam, aperiam obcaecati dolores iusto, fugiat consequatur. Eius esse neque voluptates in illo!</p>
+                <footer itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <img itemprop="image" src="" alt="">
+                  <address itemprop="name">John Doe</address>
+                </footer>
+              </article>
+              <a href="#slide-1">A</a>
+            </li>
+          </ul>
       </section>
 
       <!-- screen fold -->
