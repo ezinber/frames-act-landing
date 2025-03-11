@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
   <link rel="stylesheet" href="./src/fonts/fonts.css" defer/>
+  <link rel="stylesheet" href="./src/styles/global.css" defer/>
   <link rel="stylesheet" href="./src/styles/style.css" defer/>
   <!-- <link rel="preload" href="./src/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="./src/styles/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
@@ -104,52 +105,57 @@
 
       <section class="section section_name_feedbacks">
         <h2>Отзывы</h2>
-          <ul id="slider">
-            <li id="slide-1">
-              <a href="#slide-3">A</a>
+          <ez-carousel hidden>
+            <li>
               <article itemscope itemtype="https://schema.org/Review">
                 <p itemprop="reviewBody">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima deserunt, odio adipisci nisi explicabo sunt aspernatur 
-                  quas numquam, aperiam obcaecati dolores iusto, fugiat consequatur. Eius esse neque voluptates in illo!</p>
+                      quas numquam, aperiam obcaecati dolores iusto, fugiat consequatur. Eius esse neque voluptates in illo!</p>
                 <footer itemprop="author" itemscope itemtype="https://schema.org/Person">
                   <img itemprop="image" src="" alt="">
                   <address itemprop="name">Вася Пупкин</address>
                 </footer>
               </article>
-              <a href="#slide-2">A</a>
             </li>
-            <li id="slide-2">
-              <a href="#slide-1">A</a>
+            <li>
               <article itemscope itemtype="https://schema.org/Review">
                 <p itemprop="reviewBody">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima deserunt, odio adipisci nisi explicabo sunt aspernatur 
-                  quas numquam, aperiam obcaecati dolores iusto, fugiat consequatur. Eius esse neque voluptates in illo!</p>
+                      quas numquam, aperiam obcaecati dolores iusto, fugiat consequatur. Eius esse neque voluptates in illo!</p>
                 <footer itemprop="author" itemscope itemtype="https://schema.org/Person">
                   <img itemprop="image" src="" alt="">
                   <address itemprop="name">John Doe</address>
                 </footer>
               </article>
-              <a href="#slide-3">A</a>
             </li>
-            <li id="slide-3">
-              <a href="#slide-2">A</a>
+            <li>
               <article itemscope itemtype="https://schema.org/Review">
                 <p itemprop="reviewBody">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima deserunt, odio adipisci nisi explicabo sunt aspernatur 
-                  quas numquam, aperiam obcaecati dolores iusto, fugiat consequatur. Eius esse neque voluptates in illo!</p>
+                      quas numquam, aperiam obcaecati dolores iusto, fugiat consequatur. Eius esse neque voluptates in illo!</p>
                 <footer itemprop="author" itemscope itemtype="https://schema.org/Person">
                   <img itemprop="image" src="" alt="">
                   <address itemprop="name">John Doe</address>
                 </footer>
               </article>
-              <a href="#slide-1">A</a>
             </li>
-          </ul>
+          </ez-carousel>
       </section>
 
       <!-- screen fold -->
 
       <script async type="module" src="/src/scripts/index.js"></script>
     </main>
-    <!-- <footer class="section footer"></footer> -->
+    <footer class="section footer"></footer>
   <!-- <div id="app"></div> -->
+  <template id="ez-carousel">
+    <link rel="stylesheet" type="text/css">
+    <ul class="slides">
+      <slot></slot>
+    </ul>
+    <ul class="ctrl">
+      <li><button class="btn-prev"></button></li>
+      <li><button class="btn-next"></button></li>
+    </ul>
+    <ul class="nav"></ul>
+  </template>
 </body>
 
 </html>

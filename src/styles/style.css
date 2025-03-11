@@ -387,10 +387,10 @@ p {
 .section_name_feedbacks {
   container: feedbacks / inline-size;
 
-  & ul {
+  /* & ul {
     position: relative;
     display: flex;
-    gap: var(--prefer-sides-padding);
+    gap: var(--prefer-sides-padding, none);
     width: 100%;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
@@ -405,9 +405,13 @@ p {
 
       & > a {
         flex-basis: 20%;
+        order: 3;
+        &:first-of-type {
+          order: 1;
+        }
       }
     }
-  }
+  } */
 
   & article {
     display: flex;
