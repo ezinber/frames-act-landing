@@ -136,6 +136,26 @@
                 </footer>
               </article>
             </li>
+            <li>
+              <article itemscope itemtype="https://schema.org/Review">
+                <p itemprop="reviewBody">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima deserunt, odio adipisci nisi explicabo sunt aspernatur 
+                      quas numquam, aperiam obcaecati dolores iusto, fugiat consequatur. Eius esse neque voluptates in illo!</p>
+                <footer itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <img itemprop="image" src="" alt="">
+                  <address itemprop="name">John Doe</address>
+                </footer>
+              </article>
+            </li>
+            <li>
+              <article itemscope itemtype="https://schema.org/Review">
+                <p itemprop="reviewBody">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima deserunt, odio adipisci nisi explicabo sunt aspernatur 
+                      quas numquam, aperiam obcaecati dolores iusto, fugiat consequatur. Eius esse neque voluptates in illo!</p>
+                <footer itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <img itemprop="image" src="" alt="">
+                  <address itemprop="name">John Doe</address>
+                </footer>
+              </article>
+            </li>
           </ez-carousel>
       </section>
 
@@ -148,13 +168,17 @@
   <template id="ez-carousel">
     <link rel="stylesheet" type="text/css">
     <ul class="slides">
-      <slot></slot>
+      <slot>
+        <!-- <li> elements expected -->
+      </slot>
     </ul>
     <ul class="ctrl">
       <li><button class="btn-prev"></button></li>
       <li><button class="btn-next"></button></li>
     </ul>
-    <ul class="nav"></ul>
+    <ul class="nav">
+      <li><button class="btn-slide" data-slide="0"></button></li>
+    </ul>
   </template>
 </body>
 

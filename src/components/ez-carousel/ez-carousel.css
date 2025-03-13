@@ -2,17 +2,24 @@
   width: 100%;
   display: grid;
   grid-template-rows: 1fr auto 1fr;
+  overflow-y: hidden;
 }
 
 ul {
   margin: 0;
   padding: 0;
+  display: flex;
   list-style: none;
+}
+
+li {
+  display: flex;
 }
 
 .slides {
   margin: 0;
-  padding: 0;
+  padding: 0 0 1rem;
+  height: 100%;
   position: relative;
   display: flex;
   gap: var(--prefer-sides-padding, none);
@@ -21,9 +28,11 @@ ul {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   grid-area: 1 / 1 / 4 ;
+  box-sizing: content-box;
 }
 
 ::slotted(li) {
+  padding: 0 3.5rem 2rem;
   scroll-snap-align: center;
   width: 100%;
   display: flex;
@@ -32,18 +41,48 @@ ul {
 }
 
 .ctrl {
-  display: flex;
   justify-content: space-between;
   grid-area: 2 / 1;
+}
+
+.btn {
+  width: 3.5em;
+  aspect-ratio: 1 / 1;
+  background-color: transparent;
+  border: 2px solid currentColor;
+  cursor: pointer;
   z-index: 1;
 }
 
-.btn-prev, .btn-next {
+
+.btn-prev, .btn-next, .btn-slide {
   width: 3.5em;
   aspect-ratio: 1 / 1;
+  background-color: transparent;
+  border: 2px solid currentColor;
+  cursor: pointer;
+  z-index: 1;
 }
+
+.btn-slide {
+  transition: background-color .2s linear;
+}
+
+.btn-slide[disabled] {
+  color: inherit;
+  background-color: currentColor;
+  cursor: default;
+  opacity: 1;
+}
+
+/* .btn_active {
+  background-color: currentColor;
+} */
 
 .nav {
   grid-area: 3 / 1;
+  align-items: flex-end;
+  gap: 2rem;
+  justify-content: center;
 }
 

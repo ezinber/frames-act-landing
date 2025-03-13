@@ -1,11 +1,19 @@
+<ez-carousel hidden>
+  <!-- <li> elements expected -->
+</ez-carousel>
+
 <template id="ez-carousel">
   <link rel="stylesheet" type="text/css">
   <ul class="slides">
-    <slot></slot>
+    <slot>
+      <!-- <li> elements expected -->
+    </slot>
   </ul>
   <ul class="ctrl">
-    <li><button></button></li>
-    <li><button></button></li>
+    <li><button class="btn-prev"></button></li>
+    <li><button class="btn-next"></button></li>
   </ul>
-  <ul class="nav"></ul>
+  <ul class="nav">
+    <li><button class="btn-slide" data-slide="0"></button></li>
+  </ul>
 </template>

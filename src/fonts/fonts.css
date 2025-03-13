@@ -19,33 +19,3 @@
   font-weight: 700;
   font-display: swap;
 }
-
-
-/* Cubao */
-
-@font-face {
-  font-family: Cubao;
-  src:
-    url(./Cubao_Free_Narrow.woff2) format('woff2'),
-    url(./Cubao_Free_Narrow.woff) format('woff');
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Cubao;
-  src:
-    url(./Cubao_Free_Regular.woff2) format('woff2'),
-    url(./Cubao_Free_Regular.woff) format('woff');
-  font-weight: 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Cubao;
-  src:
-    url(./Cubao_Free_Wide.woff2) format('woff2'),
-    url(./Cubao_Free_Wide.woff) format('woff');
-  font-weight: 900;
-  font-display: swap;
-}

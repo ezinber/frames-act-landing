@@ -5,42 +5,92 @@ class EzCarousel extends HTMLElement {
     this.content = document.getElementById('ez-carousel').content.cloneNode(true);
     this.content.querySelector('link').href=`${import.meta.resolve('./ez-carousel.css')}`;
     this.shadowRoot.appendChild(this.content);
+    this.slides = this.shadowRoot.querySelector('slot').assignedElements();
+    this.currentSlide = 0;
   }
 
-  handleCtrlButtonsClick() {
-    this.ctrlButtons = this.shadowRoot.querySelector('.ctrl');
+  setCurrentSlide(index) {
+    this.toggleButtonState(index, this.currentSlide)
+    this.currentSlide = index;
+  }
 
-    this.ctrlButtons.addEventListener('click', (evt) => {
+  toggleButtonState(newIndex, oldIndex) {
+    this.buttonsArr[newIndex].toggleAttribute('disabled');
+    this.buttonsArr[oldIndex].toggleAttribute('disabled');
+  }
+
+  handleScrollToSlide(index) {
+    this.slides[index].scrollIntoView({ block: 'nearest', inline: 'start' });
+  }
+
+  defineCtrlButtons() {
+    this.ctrlButtons = this.shadowRoot.querySelector('.ctrl');
+  }
+
+  defineNavButtons() {
+    this.navButtons = this.shadowRoot.querySelector('.nav');
+    const navButtonContainer = this.navButtons.querySelector('li');
+    this.buttonsArr = [ navButtonContainer.querySelector('.btn-slide') ];
+
+    this.slides.forEach((item, index) => {
+      if (index === 0) return;
+
+      const listItem = navButtonContainer.cloneNode(true);
+      const button = listItem.querySelector('.btn-slide');
+      button.setAttribute('data-slide', index);
+      this.navButtons.appendChild(listItem);
+      this.buttonsArr.push(button);
+    });
+
+    this.buttonsArr[this.currentSlide].toggleAttribute('disabled');
+  }
+
+  handleCtrlButtonsClick = (evt) => {
+      const firstSlide = 0;
+      const lastSlide = this.slides.length - 1;
+      let targetSlide = this.currentSlide;
+
       if (evt.target.classList.contains('btn-prev')) {
-        if (this.currentSlide > 0) {
-          this.currentSlide -= 1;
-        } else {
-          this.currentSlide = this.slides.length - 1;
-        }
+        targetSlide = targetSlide > firstSlide
+          ? targetSlide - 1
+          : lastSlide;
       } else if (evt.target.classList.contains('btn-next')) {
-        if (this.currentSlide < this.slides.length - 1) {
-          this.currentSlide += 1;
-        } else {
-          this.currentSlide = 0;
-        }
+        targetSlide = targetSlide < lastSlide
+          ? targetSlide + 1
+          : firstSlide;
       }
 
-      this.slides[this.currentSlide].scrollIntoView({ block: 'nearest', inline: 'start' });
-    })
+      this.handleScrollToSlide(targetSlide);
+  }
+
+  handleNavButtonsClick = (evt) => {
+    if (evt.target.classList.contains('btn-slide')) {
+      const targetSlide = parseInt(evt.target.getAttribute('data-slide'));
+      this.handleScrollToSlide(targetSlide);
+    }
+  }
+
+  setEventListeners() {
+    this.ctrlButtons.addEventListener('click', this.handleCtrlButtonsClick);
+    this.navButtons.addEventListener('click', this.handleNavButtonsClick);
   }
 
   setIntersectionObserver() {
     const options = {
-        root: this, // Использовать viewport как корень
+        root: this,
         rootMargin: '0px',
-        threshold: 1 // 100% видимости
+        threshold: .8
     };
 
+    let debounceTimeout;
+
     const observer = new IntersectionObserver((entries) => {
+      clearTimeout(debounceTimeout);
+
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this.currentSlide = this.slides.indexOf(entry.target);
-          console.log('Текущий слайд:', this.currentSlide);
+        const targetSlide = this.slides.indexOf(entry.target);
+        if (entry.isIntersecting && targetSlide !== this.currentSlide ) {
+          this.setCurrentSlide(targetSlide);
         }
       });
     }, options);
@@ -51,11 +101,10 @@ class EzCarousel extends HTMLElement {
   }
 
   connectedCallback() {
-    this.slides = this.shadowRoot.querySelector('slot').assignedElements();
-    this.currentSlide = this.slides[0];
-
-    this.handleCtrlButtonsClick();
+    this.defineCtrlButtons();
+    this.defineNavButtons();
     this.setIntersectionObserver();
+    this.setEventListeners();
   }
 }
 
