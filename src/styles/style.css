@@ -1,5 +1,23 @@
 @import url('./animations.css');
 
+@property --min-width-rem {
+  syntax: "<length>";
+  initial-value: 0px;
+  inherits: false;
+}
+
+@property --max-width-rem {
+  syntax: "<length>";
+  initial-value: 0px;
+  inherits: false;
+}
+
+@property --full-width-vw {
+  syntax: "<length>";
+  initial-value: 0px;
+  inherits: false;
+}
+
 :root {
   --color-text-a: #f9f9f9;
   --color-accent-a: rgb(0, 0, 0);
@@ -10,9 +28,18 @@
   --drop-shadow-a: drop-shadow(0 0 .5em);
   --section-padding: 24px;
 
-  --min-screen-width: 20rem;
-  --max-screen-width: 90rem;
-  --screen-calc: (100vw - var(--min-screen-width)) / 1120 /*screen diff*/;
+  --min-width-rem: 20rem;
+  --max-width-rem: 90rem;
+  --full-width-vw: 100vw;
+  --min-width-num: 10000 * tan(atan2(var(--min-width-rem), 10000px));
+  --max-width-num: 10000 * tan(atan2(var(--max-width-rem), 10000px));
+  --full-width-num: 10000 * tan(atan2(var(--full-width-vw), 10000px));
+
+  --screen-calc: (var(--full-width-num) - var(--min-width-num)) / (var(--max-width-num) - var(--min-width-num));
+  --multiplier-1_5: clamp(1, 1 + .5 * var(--screen-calc), 1.5);
+  --multiplier-2: clamp(1, 1 + 1 * var(--screen-calc), 2);
+  --multiplier-3: clamp(1, 1 + 2 * var(--screen-calc), 3);
+  --multiplier-4: clamp(1, 1 + 3 * var(--screen-calc), 4);
 
   font-family: system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -42,6 +69,7 @@ body {
   place-items: center;
   min-width: var(--min-screen-width);
   min-height: 100vh;
+  font-size: calc(1rem * var(--multiplier-2));
 }
 
 main {
@@ -257,11 +285,13 @@ p {
 /* block 'section' */
 
 .section {
-  --prefer-sides-padding: calc(24px + 72 * var(--screen-calc));
+  /* --prefer-sides-padding: calc(24px + 72 * var(--screen-calc));
   --min-font-size: 1rem;
   --max-font-size: 2rem;
   --prefer-font-size: calc(var(--min-font-size) + 16 * var(--screen-calc));
-  font-size: clamp(var(--min-font-size), var(--prefer-font-size), var(--max-font-size));
+  font-size: clamp(var(--min-font-size), var(--prefer-font-size), var(--max-font-size)); */
+  --prefer-sides-padding: calc(24px * var(--multiplier-4));
+  font-size: calc(1rem * var(--multiplier-1_5));
 
   width: 100%;
   min-height: 100vh;
@@ -304,24 +334,50 @@ p {
 }
 
 .section_name_about {
+  & div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: var(--prefer-sides-padding);
+    row-gap: 2em;
+
+    &:nth-of-type(2n) {
+      flex-wrap: wrap-reverse;
+      --margin-auto-left: 0 0 0 auto;
+      --margin-auto-rigth: 0 auto 0 0;
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 5em;
+    }
+  }
+
   & h2 {
     font-size: 1.5em;
     font-weight: 600;
     text-wrap-style: pretty;
   }
 
-  & h2 + p {
-    margin-bottom: 4em;
+  & p {
+    flex: 1;
+    margin: var(--margin-auto-left, 0 auto 0 0);
+    min-width: 50%;
+    max-width: 30rem;
   }
 
-  & div {
+  & img {
+    flex: 1;
+    margin: var(--margin-auto-rigth, 0 0 0 auto);
     border: 1px solid #fff;
     width: 100%;
+    min-width: 18rem;
+    max-width: 30rem;
     height: fit-content;
     aspect-ratio: 2 / 1;
   }
 
-  @media (width >= 768px) {
+  /* @media (width >= 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: var(--prefer-sides-padding);
@@ -340,7 +396,7 @@ p {
       grid-row: 1 / span 2;
       align-self: center;
     }
-  }
+  } */
 }
 
 .section_name_courses {
@@ -367,7 +423,7 @@ p {
     margin-bottom: var(--prefer-sides-padding);
   }
 
-  & ul.grid-column-limiter {
+  & .grid-column-limiter {
     --grid-column-count: 4;
     --grid-column-min-width: 10rem;
     --grid-column-gap: var(--prefer-sides-padding);
