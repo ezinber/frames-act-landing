@@ -376,6 +376,7 @@ li {
       position: absolute;
       inset: 0;
       height: 100%;
+      width: 100%;
       color: #111;
     }
   }
@@ -413,19 +414,37 @@ li {
 
   & .grid-column-limiter {
     --grid-column-count: 4;
-    --grid-column-min-width: 10rem;
+    --grid-column-min-width: 16rem;
     --grid-column-gap: var(--prefer-sides-padding);
-
-    & > li {
-
-    }
   }
+}
 
-  & div {
-    border: 1px solid #fff;
-    border-radius: 9999px;
-    aspect-ratio: 1 / 1;
-  }
+.teacher-card {
+  margin: auto;
+  padding: 2em;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 24rem;
+}
+
+.teacher-card__avatar {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 1px solid #fff;
+  border-radius: 9999px;
+}
+
+.teacher-card__name {
+  margin-top: 1em;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.teacher-card__role {
+  
 }
 
 .section_name_feedbacks {
