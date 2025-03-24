@@ -83,10 +83,8 @@ h3,
 h4,
 h5,
 h6,
-p,
-section,
-ul,
-li {
+p
+{
   margin: 0;
   box-sizing: border-box;
 }
@@ -291,11 +289,11 @@ li {
   display: flex;
   flex-direction: column;
 
-  & h1,
+  /* & h1,
   & h2 {
     margin-bottom: .5em;
     line-height: 1.2;
-  }
+  } */
 
   & ul {
     margin: 0;
@@ -304,17 +302,31 @@ li {
   }
 }
 
+.section__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.section__title {
+  margin-bottom: var(--prefer-sides-padding);
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 1.2;
+  text-wrap-style: pretty;
+}
+
 /* section 'cover' */
 
 .section_name_cover {
   display: grid;
   grid-template-columns: 15em auto;
 
-  & h1 {
+  & .section__title {
     font-size: 2.5em;
   }
 
-  & h1 + p {
+  & p {
     font-size: 1.5em;
     grid-column: 1;
     line-height: 1.2;
@@ -380,12 +392,6 @@ li {
       color: #111;
     }
   }
-
-  & h2 {
-    font-size: 1.5em;
-    font-weight: 600;
-    text-wrap-style: pretty;
-  }
 }
 
 .section_name_courses {
@@ -423,7 +429,6 @@ li {
   --card-gap: 1.5em;
   --avatar-width: 14rem;
   --text-width: 14em;
-  --card-max-width: calc(var(--card-gap) * 3 + var(--avatar-width) + var(--text-width));
 
   padding: var(--card-gap);
   width: 100%;
@@ -448,9 +453,11 @@ li {
 }
 
 .teacher-card__text {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  width: var(--text-width);
+  width: 100%;
+  min-width: var(--text-width);
 }
 
 .teacher-card__name {
@@ -481,7 +488,8 @@ li {
     & img {
       width: 100%;
       aspect-ratio: 1 / 1.5;
-      border: 1px solid #fff;
+      background-color: #111;
+      border-radius: 1.5em;
     }
 
     & footer {
