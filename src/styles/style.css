@@ -323,6 +323,7 @@ p
   grid-template-columns: 15em auto;
 
   & .section__title {
+    align-self: flex-end;
     font-size: 2.5em;
   }
 
@@ -358,7 +359,7 @@ p
       order: var(--order-second, none);
       min-width: calc(18rem* var(--multiplier-2));;
       max-width: calc(100% / var(--multiplier-2));
-      border: 1px solid currentColor;
+      border: .2rem solid currentColor;
       border-radius: 1.5em;
       rotate: var(--rotate-left, 3deg);
       z-index: 1;
@@ -378,6 +379,7 @@ p
       rotate: var(--rotate-right, -3deg);
       z-index: 2;
       align-self: flex-start;
+      object-fit: cover;
     }
 
     &:not(:last-of-type) {
@@ -430,6 +432,7 @@ p
   --avatar-width: 14rem;
   --text-width: 14em;
 
+  margin: 0 auto;
   padding: var(--card-gap);
   width: 100%;
   max-width: calc(var(--card-gap) * 3 + var(--avatar-width) + var(--text-width));
@@ -447,9 +450,10 @@ p
 
 .teacher-card__avatar {
   width: var(--avatar-width);
-  aspect-ratio: 1 / 1;
-  background-color: #333;
-  border-radius: 9999px;
+  margin-top: -3em;
+  aspect-ratio: 1 / 1.3;
+  object-fit: contain;
+  mask-image: linear-gradient(to bottom, #111 80%, transparent 100%);
 }
 
 .teacher-card__text {
