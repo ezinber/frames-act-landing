@@ -480,20 +480,35 @@ p
 
   & article {
     display: flex;
+    flex-wrap: wrap-reverse;
+    /* align-items: center; */
+    justify-content: center;
+    gap: 1.5em;
+    margin-top: 1.5em;
+    padding: 1.5em;
+    border-radius: 1.5em;
+    background-color: #111;
+
 
     & p {
-      width: 70%;
+      flex: 1;
+      min-width: 50%;
     }
 
     & img {
       width: 100%;
-      aspect-ratio: 1 / 1.5;
+      aspect-ratio: 1 / calc(1 * var(--multiplier-1_5));
       background-color: #111;
       border-radius: 1.5em;
     }
 
     & footer {
-      width: 30%;
+      max-width: 14em;
+      margin-top: -3em;
+
+      & address {
+        text-align: center;
+      }
     }
   }
 }

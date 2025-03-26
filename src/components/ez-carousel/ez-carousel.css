@@ -1,7 +1,7 @@
 :host {
-  width: calc(100% + var(--prefer-sides-padding) * 2);
-  position: relative;
-  right: var(--prefer-sides-padding);
+  font-size: inherit;
+  width: calc(100% + var(--prefer-sides-padding)* 2);
+  margin-left: calc(var(--prefer-sides-padding)* -1);
   display: grid;
   overflow-y: hidden;
 }
@@ -19,6 +19,8 @@ li {
 }
 
 button {
+  padding: 0;
+  font-size: inherit;
   cursor: pointer;
   z-index: 1;
 }
@@ -41,6 +43,7 @@ button {
   padding: 0 0 2rem;
   scroll-snap-align: center;
   width: 70%;
+  min-width: 17rem;
   flex-shrink: 0;
   align-items: stretch;
 }
@@ -55,6 +58,7 @@ button {
 
 .ctrl {
   justify-content: space-between;
+  overflow: hidden;
 
   & > li {
     width: 15%;
@@ -64,16 +68,39 @@ button {
 .btn-prev, .btn-next {
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(to right, #000, transparent);
   border: none;
+  scale: 105%;
+
+  &::before {
+    content: '';
+    width: 40%;
+    aspect-ratio: 1;
+    border-top: .3em solid #fff;
+    border-right: .3em solid #fff;
+    opacity: .3;
+    transition: opacity .2s linear;
+    transform: rotate(225deg);
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
 }
 
 .btn-next {
   background: linear-gradient(to left, #000, transparent);
+
+  &::before {
+    transform: rotate(45deg);
+  }
 }
 
 .btn-slide {
-  width: 3em;
+  width: 1.5em;
   aspect-ratio: 1 / 1;
   background-color: currentColor;
   opacity: .2;
@@ -93,8 +120,11 @@ button {
 } */
 
 .nav {
-  align-items: flex-end;
-  gap: 1em;
-  justify-content: center;
+  --element-width-percent: calc(100% / attr(data-count type(<number>)));
+  width: fit-content;
+  height: fit-content;
+  align-self: flex-end;
+  justify-self: center;
+  gap: .5em;
 }
 
