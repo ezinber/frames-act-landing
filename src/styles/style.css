@@ -20,9 +20,9 @@
 
 :root {
   --color-text-a: #f9f9f9;
-  --color-accent-a: rgb(0, 0, 0);
-  --color-accent-a1: rgba(24, 28, 18, .6);
-  --color-accent-b: #9BC01F;
+  --color-background-a: rgb(0, 0, 0);
+  --color-background-b: rgba(0, 0, 0, .6);
+  --color-accent-b: red;
   --header-height: 64px;
   --transition-a: .2s ease-in;
   --drop-shadow-a: drop-shadow(0 0 .5em);
@@ -69,7 +69,7 @@ body {
   width: 100%;
   min-width: var(--min-width-rem);
   min-height: 100vh;
-  background-color: var(--color-accent-a);
+  background-color: var(--color-background-a);
   color: #f9f9f9;
 }
 
@@ -113,7 +113,7 @@ p
     content: '';
     position: absolute;
     inset: 0;
-    background-color: var(--color-accent-a1);
+    background-color: var(--color-background-b);
     z-index: -1;
   }
 }
@@ -140,20 +140,26 @@ p
 /* block 'header' */
 
 .header {
-  height: 48px;
+  --_transition: var(--transition-a, .2s linear);
+
   display: flex;
-  margin: 8px;
+  margin: .5em;
+  padding: 0 .5em;
+  font-size: calc(1rem * var(--multiplier-1_5, 1.5));
   align-items: center;
   position: fixed;
   top: 0;
-  z-index: 1;
+  background-color: var(--color-background-b, #000);
+  border-radius: 1.5em;
+  backdrop-filter: blur(8px);
+  z-index: 3;
   transition:
-    height .2s linear,
-    width .2s linear;
+    height var(--_transition),
+    width var(--_transition);
 
   @media (width <= 640px) {
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
     top: auto;
     left: auto;
     right: 0;
@@ -163,17 +169,20 @@ p
     & *:not(.header__burger) {
       opacity: 0;
       visibility: hidden;
+      transition:
+        opacity var(--_transition),
+        color var(--_transition);
     }
 
     &.header_extended {
       width: fit-content;
       height: fit-content;
-      padding: 48px;
+      padding: 1.5em;
 
       & *:not(.header__burger) {
         opacity: 1;
         visibility: visible;
-        transition: opacity .2s ease-in;
+        /* transition: opacity .2s ease-in; */
       }
     }
   }
@@ -191,6 +200,7 @@ p
   display: flex;
   justify-content: center;
   list-style: none;
+  gap: .5em;
 
   & li {
     display: flex;
@@ -208,22 +218,19 @@ p
 }
 
 .header__link {
-  padding: 1em;
-  font-family: Inter, Arial;
-  font-weight: 700;
+  padding: .5em;
+  font-weight: 600;
   line-height: 1;
   text-decoration: none;
   color: var(--color-text-a);
   text-transform: uppercase;
-  transition: all var(--transition-a);
+  transition:
+    color var(--_transition),
+    filter var(--_transition);
 
   &.header__link_active {
     color: var(--color-accent-b);
     filter: var(--drop-shadow-a);
-  }
-
-  @media (width <= 640px) {
-    font-size: 16px;
   }
 }
 
@@ -283,7 +290,7 @@ p
   min-height: 100vh;
   min-height: 100dvh;
   padding:
-    calc(var(--header-height) + 16px)
+    /* calc(var(--header-height) + 16px) */
     clamp(24px, var(--prefer-sides-padding), 96px);
   margin: auto;
   display: flex;
@@ -417,6 +424,7 @@ p
 
 .accordion {
   --_gap: 1.5em;
+  --_transition: var(--transition-a, .2s linear);
 
   display: flex;
   flex-direction: column;
@@ -432,8 +440,8 @@ p
   color: currentColor;
   font-weight: 600;
   transition:
-    opacity .2s linear,
-    padding .2s linear;
+    opacity var(--_transition),
+    padding var(--_transition);
 
   &::before {
     content: '';
@@ -442,8 +450,8 @@ p
     height: 1px;
     background-color: currentColor;
     transition:
-      inset .2s linear,
-      background-color .2s linear;
+      inset var(--_transition),
+      background-color var(--_transition);
   }
 
   &::after {
@@ -454,7 +462,7 @@ p
     border-top: .15em solid #fff;
     border-right: .15em solid #fff;
     rotate: 45deg;
-    transition: rotate .2s linear;
+    transition: rotate var(--_transition);
   }
 
   & input {
