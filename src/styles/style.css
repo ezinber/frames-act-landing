@@ -373,7 +373,7 @@ p
       min-width: calc(18rem* var(--multiplier-2));
       max-width: calc(100% / var(--multiplier-2));
       height: fit-content;
-      aspect-ratio: 2 / 1;
+      aspect-ratio: 2 / calc(2 / var(--multiplier-2));
       background-color: #111;
       border-radius: 1.5em;
       rotate: var(--rotate-right, -3deg);
@@ -428,14 +428,14 @@ p
 }
 
 .teacher-card {
-  --card-gap: 1.5em;
+  --_gap: 1.5em;
   --avatar-width: 14rem;
   --text-width: 14em;
 
   margin: 0 auto;
-  padding: var(--card-gap);
+  padding: var(--_gap);
   width: 100%;
-  max-width: calc(var(--card-gap) * 3 + var(--avatar-width) + var(--text-width));
+  max-width: calc(var(--_gap) * 3 + var(--avatar-width) + var(--text-width));
   height: 100%;
   box-sizing: border-box;
   display: flex;
@@ -443,9 +443,9 @@ p
   justify-content: space-evenly;
   align-items: center;
   align-content: flex-start;
-  gap: var(--card-gap);
+  gap: var(--_gap);
   background-color: #111;
-  border-radius: var(--card-gap);
+  border-radius: var(--_gap);
 }
 
 .teacher-card__avatar {
