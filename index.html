@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <!-- <link rel="stylesheet" href="./src/fonts/fonts.css" defer/> -->
+    <link rel="stylesheet" href="./src/styles/global.css" defer/>
+    <link rel="stylesheet" href="./src/styles/style.css" defer/>
+    <!-- <link rel="preload" href="./src/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="./src/styles/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Курсы актёрского мастерства" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:url" content="https://frames-act.ru" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="frames" />
+    <meta property="og:title" content="frames" />
+    <meta property="og:description" content="курсы актёрского мастерства" />
+    <meta property="og:image" content="https://frames-act.ru/og.webp" />
+    <title>FRAMES</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
-  <link rel="stylesheet" href="./src/fonts/fonts.css" defer/>
-  <link rel="stylesheet" href="./src/styles/global.css" defer/>
-  <link rel="stylesheet" href="./src/styles/style.css" defer/>
-  <!-- <link rel="preload" href="./src/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="./src/styles/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Курсы актёрского мастерства" />
-  <meta property="og:locale" content="ru_RU" />
-  <meta property="og:url" content="https://frames-act.ru" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="frames" />
-  <meta property="og:title" content="frames" />
-  <meta property="og:description" content="курсы актёрского мастерства" />
-  <meta property="og:image" content="https://frames-act.ru/og.webp" />
-  <title>FRAMES</title>
-</head>
-
-<body class="page">
+  <body class="page">
     <header class="header">
       <nav class="header__navigation">
         <ul class="header__list">
@@ -76,8 +75,7 @@
         </div>
         <div>
           <p>
-            Наши педагоги - это действующие актёры и кинорежиссёры, которые станут вашими коллегами. 
-С нами у вас уже появится первый кейс как актёра! Потому что вы снимитесь в коротком метре уже на обучении. 
+            Наши педагоги - это действующие актёры и кинорежиссёры, которые станут вашими коллегами. С нами у вас уже появится первый кейс как актёра! Потому что вы снимитесь в коротком метре уже на обучении. 
           </p>
           <img src="https://picsum.photos/600/400" alt="">
           <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="52 75 105 79">
@@ -256,23 +254,22 @@
       </section>
     </main>
     <footer class="section footer"></footer>
-  <!-- <div id="app"></div> -->
-  <template id="ez-carousel">
-    <link rel="stylesheet" type="text/css">
-    <ul class="slides">
-      <slot>
-        <!-- <li> elements expected -->
-      </slot>
-    </ul>
-    <ul class="ctrl">
-      <li><button class="btn-prev"></button></li>
-      <li><button class="btn-next"></button></li>
-    </ul>
-    <ul class="nav" data-count="5">
-      <li><button class="btn-slide" data-slide="0"></button></li>
-    </ul>
-  </template>
-  <script async type="module" src="./src/scripts/index.js"></script>
-</body>
-
+    <!-- <div id="app"></div> -->
+    <template id="ez-carousel">
+      <link rel="stylesheet" type="text/css">
+      <ul class="slides">
+        <slot>
+          <!-- <li> elements expected -->
+        </slot>
+      </ul>
+      <ul class="ctrl">
+        <li><button class="btn-prev"></button></li>
+        <li><button class="btn-next"></button></li>
+      </ul>
+      <ul class="nav" data-count="5">
+        <li><button class="btn-slide" data-slide="0"></button></li>
+      </ul>
+    </template>
+    <script async type="module" src="./src/scripts/index.js"></script>
+  </body>
 </html>
