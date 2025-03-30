@@ -405,14 +405,90 @@ p
     --grid-column-count: 2;
     --grid-column-min-width: 17rem;
     --grid-column-gap: var(--prefer-sides-padding);
+
+    & div {
+      width: 100%;
+      height: fit-content;
+      aspect-ratio: 2 / 1;
+      border: 1px solid #fff;
+    }
+  }
+}
+
+.accordion {
+  --_gap: 1.5em;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion__title {
+  padding: var(--_gap) 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  color: currentColor;
+  font-weight: 600;
+  transition:
+    opacity .2s linear,
+    padding .2s linear;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 1px;
+    background-color: currentColor;
+    transition:
+      inset .2s linear,
+      background-color .2s linear;
   }
 
-  & div {
-    width: 100%;
-    height: fit-content;
-    aspect-ratio: 2 / 1;
-    border: 1px solid #fff;
+  &::after {
+    content: '';
+    display: inline-block;
+    width: .5em;
+    height: .5em;
+    border-top: .15em solid #fff;
+    border-right: .15em solid #fff;
+    rotate: 45deg;
+    transition: rotate .2s linear;
   }
+
+  & input {
+    display: none;
+  }
+
+  &:has(input:checked) {
+    padding: var(--_gap);
+
+    & + .accordion__content {
+      display: block;
+    }
+
+    &::before {
+      background-color: transparent;
+      inset: auto var(--_gap) 0;
+    }
+
+    &::after {
+      rotate: 135deg;
+    }
+  }
+
+  &:hover {
+    opacity: .6;
+  }
+}
+
+.accordion__content {
+  display: none;
+  padding: var(--_gap);
+  background-color: #111;
+  border-radius: var(--_gap);
+  z-index: 1;
 }
 
 .section_name_teachers {
