@@ -146,7 +146,7 @@ p
   display: flex;
   margin: .5em;
   padding: 0 .5em;
-  font-size: calc(1rem * var(--multiplier-1_5, 1.5));
+  font-size: 1em;
   align-items: center;
   position: fixed;
   top: 0;
@@ -229,24 +229,42 @@ p
   position: relative;
   overflow: hidden;
 
-  &::before {
+  &::before,
+  &::after {
     content: '';
     position: absolute;
     left: 40%;
     right: 40%;
     color: var(--_accent-color);
     z-index: -1;
+  }
+
+  &::before {
     bottom: -.3em;
     left: 40%;
     right: 40%;
     box-shadow: 0 0 1em 0 currentColor;
     transition: box-shadow var(--_transition);
   }
+
+  &::after {
+    bottom: 0;
+    height: .2em;
+    border-radius: .2em .2em 0 0;
+    background-color: currentColor;
+    opacity: .5;
+    transform: scale(0);
+    transition: transform var(--_transition);
+  }
 }
 
 .header__link_active {
   &::before {
     box-shadow: 0 0 1em .5em currentColor;
+  }
+
+  &::after {
+    transform: scale(1);
   }
 }
 
