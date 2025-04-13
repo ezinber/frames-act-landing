@@ -34,6 +34,9 @@
             <a href="#teachers" class="header__link hover-opacity">Преподаватели</a>
           </li>
           <li>
+            <a href="#pricing" class="header__link hover-opacity">Тарифы</a>
+          </li>
+          <li>
             <a href="#feedbacks" class="header__link hover-opacity">Отзывы</a>
           </li>
         </ul>
@@ -192,22 +195,121 @@
         <h2 class="section__title">Преподаватели:</h2>
         <ul class="grid-column-limiter">
           <li>
-            <div class="teacher-card">
-              <img class="teacher-card__avatar" src="./src/images/teachers-pb.png" alt="">
-              <div class="teacher-card__text">
-                <p class="teacher-card__name">Павел Голубев</p>
-                <p class="teacher-card__role">Мастер курса, педагог по актёрскому мастерству и сценическому движению</p>
+            <ez-dialog>
+              <div class="teacher-card" slot="button">
+                <img class="teacher-card__avatar" src="./src/images/teachers-pb.png" alt="">
+                <div class="teacher-card__text">
+                  <p class="teacher-card__name">Павел Голубев</p>
+                  <p class="teacher-card__role">Мастер курса, педагог по актёрскому мастерству и сценическому движению</p>
+                </div>
               </div>
-            </div>
+              <div class="teacher-card teacher-card_place_dialog" slot="content">
+                <img class="teacher-card__avatar" src="./src/images/teachers-pb.png" alt="">
+                <div class="teacher-card__text">
+                  <p class="teacher-card__name">Павел Голубев</p>
+                  <p class="teacher-card__role">Мастер курса, педагог по актёрскому мастерству и сцен. движению.</p>
+                  <p>Образование:</p>
+                  <ul>
+                    <li>🎓 ГИТИС, мастерская А. В. Бородина (2013);</li>
+                    <li>🎓 Институт кино и театра им. Ли Страсберга, Нью-Йорк (2015);</li>
+                    <li>🎓 Киноакадемия Баден-Вюртемберг (2018).</li>
+                  </ul>
+                  <p>Павел преподаёт по своей авторской методике, в которой объединил методы двух великих мастеров – Ли Страсберга и Рудольфа Лабана. Основное внимание уделяет не только базе, но и освобождению тела от зажимов и достижению полной свободы движений.</p>
+                </div>
+              </div>
+            </ez-dialog>
           </li>
           <li>
-            <div class="teacher-card">
-              <img class="teacher-card__avatar" src="./src/images/teachers-ak.png" alt="">
-              <div class="teacher-card__text">
-                <p class="teacher-card__name">Антон Клопов</p>
-                <p class="teacher-card__role">Педагог по сценической речи</p>
+            <ez-dialog>
+              <div class="teacher-card" slot="button">
+                <img class="teacher-card__avatar" src="./src/images/teachers-ak.png" alt="">
+                <div class="teacher-card__text">
+                  <p class="teacher-card__name">Антон Клопов</p>
+                  <p class="teacher-card__role">Педагог по сценической речи</p>
+                </div>
               </div>
-            </div>
+              <div class="teacher-card teacher-card_place_dialog" slot="content">
+                <img class="teacher-card__avatar" src="./src/images/teachers-ak.png" alt="">
+                <div class="teacher-card__text">
+                  <p class="teacher-card__name">Антон Клопов</p>
+                  <p class="teacher-card__role">Педагог по сцен. речи</p>
+                  <p>Образование:</p>
+                  <ul>
+                    <li>🎓 ЕГТИ, мастерская засл. арт. Гараниной Н. В. (2015);</li>
+                    <li>🎓 ГИТИС, мастерская нар. арт. Лазарева Н. Е. (2020);</li>
+                  </ul>
+                  <p>"Очень нравится преподавать речь взрослым и осознанным людям. Видеть их прогресс и горящие глаза. Искренне считаю, что сценическая речь - это не скучно, а наоборот весело и увлекательно! Без грамотной речи путь в кино или театр заказан, потому как уже второе, на что обращают внимание после внешности - это то "как" и "что" вы говорите. Поэтому с радостью помогаю прокачать вашу Речь!"</p>
+                </div>
+              </div>
+            </ez-dialog>
+          </li>
+        </ul>
+      </section>
+
+      <section id="pricing" class="section section_name_pricing">
+        <h2 class="section__title">Тарифы</h2>
+        <ul>
+          <li>
+            <ez-dialog hidden>
+              <div class="price-card" slot="button">
+                <p class="price-card__title">Стандарт</p>
+                <ul class="price-card__list">
+                  <li>актёрское мастерство</li>
+                  <li>сценическое движение</li>
+                  <li>сценическая речь</li>
+                  <li>кинокурс</li>
+                </ul>
+              </div>
+              <div class="price-card" slot="content">
+                <p class="price-card__title">Стандарт</p>
+                <ul class="price-card__list">
+                  <li>актёрское мастерство</li>
+                  <li>сценическое движение</li>
+                  <li>сценическая речь</li>
+                  <li>кинокурс</li>
+                </ul>
+              </div>
+            </ez-dialog>
+          </li>
+          <li>
+            <ez-dialog hidden>
+              <div class="price-card" slot="button">
+                <p class="price-card__title">Медиум</p>
+                <ul class="price-card__list">
+                  <li>Программа "Стандарт"</li>
+                  <li>Две сессии с психологом</li>
+                  <li>Съёмка портфолио и видеовизитки</li>
+                </ul>
+              </div>
+              <div class="price-card" slot="content">
+                <p class="price-card__title">Медиум</p>
+                <ul class="price-card__list">
+                  <li>Программа "Стандарт"</li>
+                  <li>Две сессии с психологом</li>
+                  <li>Съёмка портфолио и видеовизитки</li>
+                </ul>
+              </div>
+            </ez-dialog>
+          </li>
+          <li>
+            <ez-dialog hidden>
+              <div class="price-card" slot="button">
+                <p class="price-card__title">Премиум</p>
+                <ul class="price-card__list">
+                  <li>Программа "Медиум"</li>
+                  <li>Съёмка дипломного фильма</li>
+                  <li>Диплом гос. образца о проф. переподготовке</li>
+                </ul>
+              </div>
+              <div class="price-card" slot="content">
+                <p class="price-card__title">Премиум</p>
+                <ul class="price-card__list" slot="content">
+                  <li>Программа "Медиум"</li>
+                  <li>Съёмка дипломного фильма</li>
+                  <li>Диплом гос. образца о проф. переподготовке</li>
+                </ul>
+              </div>
+            </ez-dialog>
           </li>
         </ul>
       </section>
@@ -285,6 +387,20 @@
         <li><button class="btn-slide" data-slide="0"></button></li>
       </ul>
     </template>
+
+    <template id="ez-dialog">
+      <link rel="stylesheet" type="text/css">
+      <button>
+        <slot name="button"></slot>
+      </button>
+      <dialog>
+        <form method="dialog">
+          <slot name="content"></slot>
+          <button class="close-btn" autofocus>закрыть</button>
+        </form>
+      </dialog>
+    </template>
+
     <script async type="module" src="./src/scripts/index.js"></script>
   </body>
 </html>

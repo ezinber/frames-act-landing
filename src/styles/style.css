@@ -22,6 +22,7 @@
   --color-text-a: #f9f9f9;
   --color-background-a: rgb(0, 0, 0);
   --color-background-b: rgba(0, 0, 0, .6);
+  --color-background-c: #111;
   --color-accent-b: red;
   --header-height: 64px;
   --transition-a: .2s ease-in;
@@ -36,6 +37,7 @@
   --full-width-num: 10000 * tan(atan2(var(--full-width-vw), 10000px));
 
   --screen-calc: (var(--full-width-num) - var(--min-width-num)) / (var(--max-width-num) - var(--min-width-num));
+  --multiplier-1_25: clamp(1, 1 + .25 * var(--screen-calc), 1.25);
   --multiplier-1_5: clamp(1, 1 + .5 * var(--screen-calc), 1.5);
   --multiplier-2: clamp(1, 1 + 1 * var(--screen-calc), 2);
   --multiplier-3: clamp(1, 1 + 2 * var(--screen-calc), 3);
@@ -70,7 +72,7 @@ body {
   min-width: var(--min-width-rem);
   min-height: 100vh;
   background-color: var(--color-background-a);
-  color: #f9f9f9;
+  color: var(--color-text-a);
 }
 
 main {
@@ -146,7 +148,7 @@ p
   display: flex;
   margin: .5em;
   padding: 0 .5em;
-  font-size: 1em;
+  font-size: calc(1rem * var(--multiplier-1_25, 1));
   align-items: center;
   position: fixed;
   top: 0;
@@ -225,7 +227,7 @@ p
   line-height: 1;
   text-decoration: none;
   color: currentColor;
-  text-transform: uppercase;
+  text-transform: lowercase;
   position: relative;
   overflow: hidden;
 
@@ -318,22 +320,16 @@ p
 
 .section {
   --prefer-sides-padding: calc(24px * var(--multiplier-4));
-  
-  font-size: calc(1rem * var(--multiplier-1_5));
+
+  font-size: calc(1rem * var(--multiplier-1_25));
   box-sizing: border-box;
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: clamp(24px, var(--prefer-sides-padding), 96px);
+  padding: var(--prefer-sides-padding);
   margin: auto;
   display: flex;
   flex-direction: column;
-
-  & ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
 }
 
 .section__list {
@@ -408,7 +404,7 @@ p
       max-width: calc(100% / var(--multiplier-2));
       height: fit-content;
       aspect-ratio: 2 / calc(2 / var(--multiplier-2));
-      background-color: #111;
+      background-color: var(--color-background-c);
       border-radius: 1.5em;
       rotate: var(--rotate-right, -3deg);
       z-index: 2;
@@ -425,7 +421,7 @@ p
       inset: 0;
       height: 100%;
       width: 100%;
-      color: #111;
+      color: var(--color-background-c);
     }
   }
 }
@@ -444,7 +440,7 @@ p
       width: 100%;
       height: fit-content;
       aspect-ratio: 2 / 1;
-      border: 1px solid #fff;
+      border: 1px solid var(--color-text-a);
     }
   }
 }
@@ -488,8 +484,8 @@ p
     display: inline-block;
     width: .5em;
     height: .5em;
-    border-top: .15em solid #fff;
-    border-right: .15em solid #fff;
+    border-top: .15em solid var(--color-text-a);
+    border-right: .15em solid var(--color-text-a);
     rotate: 45deg;
     transition: rotate var(--_transition);
   }
@@ -523,9 +519,47 @@ p
 .accordion__content {
   display: none;
   padding: var(--_gap);
-  background-color: #111;
+  background-color: var(--color-background-c);
   border-radius: var(--_gap);
   z-index: 1;
+}
+
+.section_name_pricing {
+  & > ul {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+    gap: var(--prefer-sides-padding);
+    list-style: none;
+  }
+}
+
+.price-card {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 1.5em;
+  background-color: var(--color-background-c);
+  border-radius: 1.5em;
+}
+
+.price-card__title {
+  font-weight: 600;
+  text-align: center;
+
+  &::after {
+    content: '-';
+    display: block;
+    text-align: center;
+  }
+}
+
+.price-card__list {
+  padding-left: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  list-style: disc;
 }
 
 .section_name_teachers {
@@ -533,7 +567,10 @@ p
     margin-bottom: var(--prefer-sides-padding);
   }
 
-  & .grid-column-limiter {
+  & > ul.grid-column-limiter {
+    margin: 0;
+    padding: 0;
+
     --grid-column-count: 4;
     --grid-column-min-width: 17em;
     --grid-column-gap: var(--prefer-sides-padding);
@@ -557,8 +594,16 @@ p
   align-items: center;
   align-content: flex-start;
   gap: var(--_gap);
-  background-color: #111;
+  background-color: var(--color-background-c);
   border-radius: var(--_gap);
+}
+
+.teacher-card_place_dialog {
+  max-width: 100%;
+
+  & .teacher-card__avatar {
+    margin-top: 0;
+  }
 }
 
 .teacher-card__avatar {
@@ -566,7 +611,7 @@ p
   margin-top: -3em;
   aspect-ratio: 1 / 1.3;
   object-fit: contain;
-  mask-image: linear-gradient(to bottom, #111 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, var(--color-background-c) 80%, transparent 100%);
 }
 
 .teacher-card__text {
@@ -604,7 +649,7 @@ p
     margin-top: 1.5em;
     padding: 1.5em;
     border-radius: 1.5em;
-    background-color: #111;
+    background-color: var(--color-background-c);
 
 
     & p {
@@ -615,7 +660,7 @@ p
     & img {
       width: 100%;
       aspect-ratio: 1 / calc(1 * var(--multiplier-1_5));
-      background-color: #111;
+      background-color: var(--color-background-c);
       border-radius: 1.5em;
     }
 
