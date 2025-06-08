@@ -346,18 +346,46 @@ p
 /* section 'cover' */
 
 .section_name_cover {
+  padding: 0;
   display: grid;
-  grid-template-columns: 15em auto;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-auto-rows: 100vh;
+  grid-auto-rows: 100dvb;
 
-  & .section__title {
-    align-self: flex-end;
-    font-size: 2.5em;
+  & .section__image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
-  & p {
-    font-size: 1.5em;
-    grid-column: 1;
-    line-height: 1.2;
+  & .section__text {
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  & .section__title {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 2.5em;
+    border: 1px solid currentColor;
+    border-radius: 2rem;
+  }
+
+  & .section__title-accent {
+    display: block;
+  }
+
+  & .section__subtitle {
+
   }
 }
 
