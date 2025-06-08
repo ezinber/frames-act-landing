@@ -1,4 +1,15 @@
+/**
+ * The `EzCarousel` web component provides a simple and customizable carousel interface.
+ *
+ * @class EzCarousel
+ * @extends HTMLElement
+ */
 class EzCarousel extends HTMLElement {
+  /**
+   * Constructs a new `EzCarousel` instance.
+   *
+   * @constructor
+   */
   constructor() {
     super();
     this.attachShadow({mode: 'open'});
@@ -9,24 +20,58 @@ class EzCarousel extends HTMLElement {
     this.currentSlide = 0;
   }
 
+  /**
+   * Sets the current slide index.
+   *
+   * @param {number} index - The index of the slide to set as the current slide.
+   * @memberof EzCarousel
+   * @returns {void}
+   */
   setCurrentSlide(index) {
     this.toggleButtonState(index, this.currentSlide)
     this.currentSlide = index;
   }
 
+  /**
+   * Toggles the disabled state of the navigation buttons.
+   *
+   * @param {number} newIndex - The index of the new slide.
+   * @param {number} oldIndex - The index of the previous slide.
+   * @memberof EzCarousel
+   * @returns {void}
+   */
   toggleButtonState(newIndex, oldIndex) {
     this.buttonsArr[newIndex].toggleAttribute('disabled');
     this.buttonsArr[oldIndex].toggleAttribute('disabled');
   }
 
+  /**
+   * Scrolls the carousel to the specified slide.
+   *
+   * @param {number} index - The index of the slide to scroll to.
+   * @memberof EzCarousel
+   * @returns {void}
+   */
   handleScrollToSlide(index) {
     this.slides[index].scrollIntoView({ block: 'nearest', inline: 'start' });
   }
 
+  /**
+   * Defines the control buttons for the carousel.
+   *
+   * @memberof EzCarousel
+   * @returns {void}
+   */
   defineCtrlButtons() {
     this.ctrlButtons = this.shadowRoot.querySelector('.ctrl');
   }
 
+  /**
+   * Defines the navigation buttons for the carousel.
+   *
+   * @memberof EzCarousel
+   * @returns {void}
+   */
   defineNavButtons() {
     this.navButtons = this.shadowRoot.querySelector('.nav');
     const navButtonContainer = this.navButtons.querySelector('li');
@@ -45,6 +90,13 @@ class EzCarousel extends HTMLElement {
     this.buttonsArr[this.currentSlide].toggleAttribute('disabled');
   }
 
+  /**
+   * Handles the click event on the control buttons.
+   *
+   * @param {Event} evt - The click event object.
+   * @memberof EzCarousel
+   * @returns {void}
+   */
   handleCtrlButtonsClick = (evt) => {
       const firstSlide = 0;
       const lastSlide = this.slides.length - 1;
@@ -63,6 +115,13 @@ class EzCarousel extends HTMLElement {
       this.handleScrollToSlide(targetSlide);
   }
 
+  /**
+   * Handles the click event on the navigation buttons.
+   *
+   * @param {Event} evt - The click event object.
+   * @memberof EzCarousel
+   * @returns {void}
+   */
   handleNavButtonsClick = (evt) => {
     if (evt.target.classList.contains('btn-slide')) {
       const targetSlide = parseInt(evt.target.getAttribute('data-slide'));
@@ -70,11 +129,23 @@ class EzCarousel extends HTMLElement {
     }
   }
 
+  /**
+   * Sets the event listeners for the carousel.
+   *
+   * @memberof EzCarousel
+   * @returns {void}
+   */
   setEventListeners() {
     this.ctrlButtons.addEventListener('click', this.handleCtrlButtonsClick);
     this.navButtons.addEventListener('click', this.handleNavButtonsClick);
   }
 
+  /**
+   * Sets up the IntersectionObserver to detect when slides come into view.
+   *
+   * @memberof EzCarousel
+   * @returns {void}
+   */
   setIntersectionObserver() {
     const options = {
         root: this,
@@ -100,6 +171,12 @@ class EzCarousel extends HTMLElement {
     });
   }
 
+  /**
+   * Called when the `EzCarousel` element is inserted into the DOM.
+   *
+   * @memberof EzCarousel
+   * @returns {void}
+   */
   connectedCallback() {
     this.defineCtrlButtons();
     this.defineNavButtons();

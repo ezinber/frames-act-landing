@@ -1,4 +1,15 @@
+/**
+ * The `EzDialog` web component provides a simple and customizable dialog interface.
+ *
+ * @class EzDialog
+ * @extends HTMLElement
+ */
 class EzDialog extends HTMLElement {
+  /**
+   * Constructs a new `EzDialog` instance.
+   *
+   * @constructor
+   */
   constructor() {
     super();
     this.attachShadow({mode: 'open'});
@@ -9,6 +20,12 @@ class EzDialog extends HTMLElement {
     this.dialog = this.shadowRoot.querySelector('dialog');
   }
 
+  /**
+   * Called when the `EzDialog` element is inserted into the DOM.
+   *
+   * @memberof EzDialog
+   * @returns {void}
+   */
   connectedCallback() {
     this.dialogOpenButton.addEventListener('click', () => this.dialog.showModal());
 
@@ -18,4 +35,10 @@ class EzDialog extends HTMLElement {
   }
 }
 
+/**
+ * Registers the `EzDialog` custom element with the browser's `customElements` registry.
+ *
+ * @function registerEzDialog
+ * @returns {void}
+ */
 export const registerEzDialog = () => customElements.define('ez-dialog', EzDialog);
