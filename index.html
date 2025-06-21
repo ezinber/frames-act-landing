@@ -28,6 +28,9 @@
             <a href="#about" class="header__link hover-opacity">О нас</a>
           </li>
           <li>
+            <a href="#courses" class="header__link hover-opacity">курсы</a>
+          </li>
+          <li>
             <a href="#program" class="header__link hover-opacity">программа</a>
           </li>
           <li>
@@ -35,9 +38,6 @@
           </li>
           <li>
             <a href="#pricing" class="header__link hover-opacity">Тарифы</a>
-          </li>
-          <li>
-            <a href="#feedbacks" class="header__link hover-opacity">Отзывы</a>
           </li>
         </ul>
       </nav>
@@ -47,11 +47,13 @@
     <main class="main">
       <section class="section section_sticky-title section_name_cover">
         <img class="section__image section__flex-item" src="./src/images/about-1-640.webp" alt=""/>
-        <div class="section__text section__flex-item">
-          <h1 class="section__title">
-            <span class="section__title-accent">frames</span> moscow
+        <div class="logo section__text section__flex-item">
+          <h1 class="logo__title">
+            <span class="logo__title-accent"> ••••• </span>
+            <span class="section__title-accent">frames</span>
+            <span class="logo__title-accent">moscow</span>
           </h1>
-          <p class="section__subtitle">школа актёрского мастерства</p>
+          <p class="logo__subtitle">школа актёрского мастерства</p>
         </div>
       </section>
 
@@ -151,6 +153,57 @@
         </div> -->
       </section>
 
+      <section id="courses" class="section section_sticky-title section_name_pricing">
+        <h2 class="section__title">курсы</h2>
+        <ul>
+          <li>
+            <ez-dialog hidden>
+              <div class="price-card hover-opacity" slot="button">
+                <img src="./src/images/about-1-640.webp" alt="" class="price-card__image">
+                <div class="price-card__text">
+                  <p class="price-card__title">проф. переподготовка</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti fuga provident error nam repellendus! Natus distinctio sit vero aliquam blanditiis nihil, possimus provident soluta odio excepturi incidunt totam explicabo dolores!</p>
+                </div>
+              </div>
+              <div class="price-card" slot="content">
+                <p class="price-card__title">проф. переподготовка</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id, error, cum commodi numquam molestiae similique, laboriosam itaque dicta eveniet soluta sed delectus mollitia modi? Eaque fugiat laboriosam iusto sequi?</p>
+              </div>
+            </ez-dialog>
+          </li>
+          <li>
+            <ez-dialog hidden>
+              <div class="price-card hover-opacity" slot="button">
+                <img src="./src/images/about-1-640.webp" alt="" class="price-card__image">
+                <div class="price-card__text">
+                  <p class="price-card__title">повышение квалификации</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id, error, cum commodi numquam molestiae similique, laboriosam itaque dicta eveniet soluta sed delectus mollitia modi? Eaque fugiat laboriosam iusto sequi?</p>
+                </div>
+              </div>
+              <div class="price-card" slot="content">
+                <p class="price-card__title">повышение квалификации</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id, error, cum commodi numquam molestiae similique, laboriosam itaque dicta eveniet soluta sed delectus mollitia modi? Eaque fugiat laboriosam iusto sequi?</p>
+              </div>
+            </ez-dialog>
+          </li>
+          <li>
+            <ez-dialog hidden>
+              <div class="price-card hover-opacity" slot="button">
+                <img src="./src/images/about-1-640.webp" alt="" class="price-card__image">
+                <div class="price-card__text">
+                  <p class="price-card__title">дети</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id, error, cum commodi numquam molestiae similique, laboriosam itaque dicta eveniet soluta sed delectus mollitia modi? Eaque fugiat laboriosam iusto sequi?</p>
+                </div>
+              </div>
+              <div class="price-card" slot="content">
+                <p class="price-card__title">дети</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia id, error, cum commodi numquam molestiae similique, laboriosam itaque dicta eveniet soluta sed delectus mollitia modi? Eaque fugiat laboriosam iusto sequi?</p>
+              </div>
+            </ez-dialog>
+          </li>
+        </ul>
+      </section>
+
       <section id="program" class="section section_sticky-title section_name_program">
         <h2 class="section__title">программа</h2>
         <div class="content-block">
@@ -183,29 +236,20 @@
               разбор
               сверхзадачи, сцен. задачи, препятствий.</p>
           </div>
-          <div class="content-block__image-set"></div>
+          <div class="content-block__image-set">
+            <img class="section__image section__image_portrait" src="./src/images/about-1-640.webp" alt="">
+          </div>
         </div>
 
         <div class="content-block">
           <div class="content-block__text">
             <h3>сценическое движение</h3>
-            <p>Классы
-              по
-              сценическому
-              движению
-              посвящены развитию разных аспектов
-              телесной выразительности. Мы работаем
-              над силой, выносливостью, гибкостью,
-              координацией, реакцией, спонтанностью,
-              партнерингом — для того, чтобы сделать
-              телоактерамаксимальнопослушным,
-              яркимивыразительным.Основная
-              задача этой дисциплины — превратить
-              тело в инструмент, позволяющий актеру
-              максимально интересно и точно доносить
-              до зрителя свою мысль, образ, эмоцию.</p>
+            <p>Классы по сценическому движению посвящены развитию разных аспектов телесной выразительности. Мы работаем над силой, выносливостью, гибкостью, координацией, реакцией, спонтанностью, партнерингом — для того, чтобы сделать тело актера максимально послушным, ярким и выразительным. Основная задача этой дисциплины — превратить тело в инструмент, позволяющий актеру максимально интересно и точно доносить до зрителя свою мысль, образ, эмоцию.</p>
           </div>
-          <div class="content-block__image-set"></div>
+          <div class="content-block__image-set">
+            <img class="section__image section__image_landscape" src="./src/images/about-1-640.webp" alt="">
+            <img class="section__image section__image_landscape" src="./src/images/about-1-640.webp" alt="">
+          </div>
         </div>
 
         <div class="content-block">
@@ -216,7 +260,9 @@
               дикционные способности, звуковысотный
               диапазон, проходят речевые тренинги.</p>
           </div>
-          <div class="content-block__image-set"></div>
+          <div class="content-block__image-set">
+            <img class="section__image section__image_portrait" src="./src/images/about-1-640.webp" alt="">
+          </div>
         </div>
 
         <div class="content-block">
@@ -224,7 +270,10 @@
             <h3>киноблок. работа с камерой</h3>
             <p></p>
           </div>
-          <div class="content-block__image-set"></div>
+          <div class="content-block__image-set">
+            <img class="section__image section__image_landscape" src="./src/images/about-1-640.webp" alt="">
+            <img class="section__image section__image_landscape" src="./src/images/about-1-640.webp" alt="">
+          </div>
         </div>
 
         <div class="content-block">
@@ -238,7 +287,9 @@
               стать увереннее в себе. Также возможна
               работа по индивидуальному запросу.</p>
           </div>
-          <div class="content-block__image-set"></div>
+          <div class="content-block__image-set">
+            <img class="section__image section__image_portrait" src="./src/images/about-1-640.webp" alt="">
+          </div>
         </div>
 
         <div class="content-block">
@@ -248,11 +299,14 @@
               станет стартом твоего профессионального
               актёрского пути.</p>
           </div>
-          <div class="content-block__image-set"></div>
+          <div class="content-block__image-set">
+            <img class="section__image section__image_landscape" src="./src/images/about-1-640.webp" alt="">
+            <img class="section__image section__image_landscape" src="./src/images/about-1-640.webp" alt="">
+          </div>
         </div>
       </section>
 
-      <section id="courses" class="section section_sticky-title section_name_courses">
+      <!-- <section id="program" class="section section_sticky-title section_name_courses">
         <h2 class="section__title">
           программа
         </h2>
@@ -331,21 +385,9 @@
             <p>Съёмка в дипломном фильме, который станет стартом твоего профессионального актёрского пути.</p>
           </div>
         </div>
+      </section> -->
 
-        <!-- <ul class="grid-column-limiter">
-          <li>
-            <div></div>
-          </li>
-          <li>
-            <div></div>
-          </li>
-          <li>
-            <div></div>
-          </li>
-        </ul> -->
-      </section>
-
-      <section id="teachers" class="section section_sticky-title section_name_teachers">
+      <!-- <section id="teachers" class="section section_sticky-title section_name_teachers">
         <h2 class="section__title">преподаватели</h2>
         <ul class="grid-column-limiter">
           <li>
@@ -398,7 +440,7 @@
             </ez-dialog>
           </li>
         </ul>
-      </section>
+      </section> -->
 
       <section id="pricing" class="section section_sticky-title section_name_pricing">
         <h2 class="section__title">тарифы</h2>
@@ -406,13 +448,16 @@
           <li>
             <ez-dialog hidden>
               <div class="price-card hover-opacity" slot="button">
-                <p class="price-card__title">Стандарт</p>
-                <ul class="price-card__list">
-                  <li>актёрское мастерство</li>
-                  <li>сценическое движение</li>
-                  <li>сценическая речь</li>
-                  <li>кинокурс</li>
-                </ul>
+                <img src="./src/images/about-1-640.webp" alt="" class="price-card__image">
+                <div class="price-card__text">
+                  <p class="price-card__title">Стандарт</p>
+                  <ul class="price-card__list">
+                    <li>актёрское мастерство</li>
+                    <li>сценическое движение</li>
+                    <li>сценическая речь</li>
+                    <li>кинокурс</li>
+                  </ul>
+                </div>
               </div>
               <div class="price-card" slot="content">
                 <p class="price-card__title">Стандарт</p>
@@ -428,12 +473,15 @@
           <li>
             <ez-dialog hidden>
               <div class="price-card hover-opacity" slot="button">
-                <p class="price-card__title">Медиум</p>
-                <ul class="price-card__list">
-                  <li>Программа "Стандарт"</li>
-                  <li>Две сессии с психологом</li>
-                  <li>Съёмка портфолио и видеовизитки</li>
-                </ul>
+                <img src="./src/images/about-1-640.webp" alt="" class="price-card__image">
+                <div class="price-card__text">
+                  <p class="price-card__title">Медиум</p>
+                  <ul class="price-card__list">
+                    <li>Программа "Стандарт"</li>
+                    <li>Две сессии с психологом</li>
+                    <li>Съёмка портфолио и видеовизитки</li>
+                  </ul>
+                </div>
               </div>
               <div class="price-card" slot="content">
                 <p class="price-card__title">Медиум</p>
@@ -448,12 +496,15 @@
           <li>
             <ez-dialog hidden>
               <div class="price-card hover-opacity" slot="button">
-                <p class="price-card__title">Премиум</p>
-                <ul class="price-card__list">
-                  <li>Программа "Медиум"</li>
-                  <li>Съёмка дипломного фильма</li>
-                  <li>Диплом гос. образца о проф. переподготовке</li>
-                </ul>
+                <img src="./src/images/about-1-640.webp" alt="" class="price-card__image">
+                <div class="price-card__text">
+                  <p class="price-card__title">Премиум</p>
+                  <ul class="price-card__list">
+                    <li>Программа "Медиум"</li>
+                    <li>Съёмка дипломного фильма</li>
+                    <li>Диплом гос. образца о проф. переподготовке</li>
+                  </ul>
+                </div>
               </div>
               <div class="price-card" slot="content">
                 <p class="price-card__title">Премиум</p>
@@ -467,7 +518,6 @@
           </li>
         </ul>
       </section>
-
       <!-- <section id="feedbacks" class="section section_sticky-title section_name_feedbacks">
         <h2 class="section__title">отзывы</h2>
           <ez-carousel hidden>
@@ -524,7 +574,16 @@
           </ez-carousel>
       </section> -->
     </main>
-    <footer class="section footer"></footer>
+    <footer class="section footer">
+      <div class="logo">
+        <h1 class="logo__title">
+          <span class="logo__title-accent"> ••••• </span>
+          <span class="section__title-accent">frames</span>
+          <span class="logo__title-accent">moscow</span>
+        </h1>
+        <p class="logo__subtitle">самые чёткие в мультивселенной</p>
+      </div>
+    </footer>
     <!-- <div id="app"></div> -->
     <template id="ez-carousel">
       <link rel="stylesheet" type="text/css">
