@@ -331,11 +331,12 @@ p
   min-height: 100vh;
   min-height: 100dvh;
   margin: auto;
-  padding: var(--prefer-sides-padding);
+  padding: 0 var(--prefer-sides-padding);
   font-size: calc(1rem * var(--multiplier-1_25));
   width: 100%;
   display: flex;
   flex-direction: column;
+  row-gap: 20vh;
 }
 
 .section_sticky-title {
@@ -348,7 +349,7 @@ p
 
   & > .section__title {
     position: sticky;
-    top: var(--prefer-sides-padding);
+    top: 10vh;
     width: fit-content;
     height: fit-content;
     margin: 0;
@@ -440,12 +441,14 @@ p
   --_flex-flow: row wrap-reverse;
   --_image-set-padding: 0 0 0 10%;
   --_image-set-after-inset: 10% 30% 10% 0;
+  --_text-row-gap: 1lh;
 
   min-height: 100vh;
   min-height: 100dvb;
-  padding: var(--prefer-sides-padding) 0;
   display: flex;
-  flex-flow: row wrap-reverse;
+  flex-flow: var(--_flex-flow);
+  align-items: center;
+  align-content: center;
   gap: var(--prefer-sides-padding)
 }
 
@@ -460,10 +463,27 @@ p
   display: flex;
   flex-direction: column;
   justify-content: center;
-  row-gap: 1lh;
+  row-gap: var(--_text-row-gap);
   flex: 3 1 20rem;
   text-wrap-style: balance;
 }
+
+.content-block__article {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--_text-row-gap);
+
+  &:not(:last-of-type) {
+    margin-bottom: var(--_text-row-gap);
+  }
+}
+
+.content-block__title {
+  font-size: 1.2em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 
 .content-block__image-set {
   max-width: 36rem;
@@ -557,14 +577,6 @@ p
   position: relative;
   display: flex;
   flex-flow: row wrap;
-
-  /* &::before {
-    content: '';
-    width: 1px;
-    inset: 1em 50%;
-    background-color: currentColor;
-    order: 2;
-  } */
 }
 
 .address__text,
@@ -681,20 +693,18 @@ p
 
 .price-card__text {
   padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2lh;
   border: 1px solid currentColor;
   border-radius: 1.5em;
   flex-grow: 1;
 }
 
 .price-card__title {
-  font-weight: 600;
-  text-align: center;
-
-  &::after {
-    content: '-';
-    display: block;
-    text-align: center;
-  }
+  text-transform: uppercase;
+  font-size: 1em;
+  letter-spacing: var(--_letter-spacing, .5ch);
 }
 
 .price-card__list {
@@ -703,11 +713,16 @@ p
   flex-direction: column;
   gap: .5em;
   list-style: disc;
+  flex-grow: 1;
+}
+
+.price-card__price {
+  text-align: center;
 }
 
 .teacher-card {
   --_gap: 1.5em;
-  --_avatar-width: 14rem;
+  --_avatar-width: 16rem;
   --_text-width: 14em;
 
   margin: 0 auto;
@@ -718,10 +733,9 @@ p
   min-height: 100dvh;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
   align-items: flex-start;
   align-content: flex-start;
-  gap: var(--prefer-sides-padding, 1.5em);
+  gap: 2lh 15%;
 }
 
 .teacher-card_place_dialog {
@@ -735,7 +749,7 @@ p
 .teacher-card__avatar {
   width: var(--_avatar-width);
   aspect-ratio: 1;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .teacher-card__about {
@@ -743,14 +757,16 @@ p
   min-width: var(--_text-width);
   display: flex;
   flex-direction: column;
-  gap: 2em;
   text-align: start;
+  row-gap: 1lh;
   flex: 1 1 0;
 }
 
 .teacher-card__name {
   font-size: 1em;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .4ch;
 }
 
 .teacher-card__role {
